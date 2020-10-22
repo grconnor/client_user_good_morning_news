@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form, Container, Message } from "semantic-ui-react";
 import { auth } from "../modules/auth";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const SignUpForm = () => {
   const [failureMessage, setFailureMessage] = useState("");
-  const dispatch = useDispatch();
   const history = useHistory();
 
-  const signUp = async (event, dispatch, history) => {
+  const signUp = async (event, history) => {
     event.preventDefault();
     try {
       const name = event.target.name.value;
@@ -17,14 +15,7 @@ const SignUpForm = () => {
       const password = event.target.password.value;
       const passwordConfirmation = event.target.passwordConfirmation.value;
     
-      const response = await auth.signUp(name, email, password, pass);
-      dispatch({
-        type: "AUTHENTICATE",
-        payload: {
-          authenticated: response.success,
-          currentUser: response.data,
-        },
-      });
+      const response = await auth.signUp(name, email, password, passwordConfirmation);
       history.replace("/login", { message: response.data.message });
     } catch (error) {
       setFailureMessage(error.response.data.errors[0]);
@@ -35,7 +26,7 @@ const SignUpForm = () => {
     <Container>
       <Form
         data-cy="sign-up-form"
-        onSubmit={(event) => signUp(event, dispatch, history)}
+        onSubmit={(event) => signUp(event, history)}
       >
         <Form.Input
           icon="name"
