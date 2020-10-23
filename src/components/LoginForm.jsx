@@ -27,6 +27,7 @@ const LoginForm = () => {
       });
 
       history.replace({ pathname: "/" });
+
     } catch (error) {
       setMessage(error.response.data.errors[0]);
     }
