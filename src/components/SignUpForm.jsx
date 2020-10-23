@@ -21,9 +21,10 @@ const SignUpForm = () => {
         password: password,
         password_confirmation: password_confirmation,
       });
+      debugger
       history.replace("/login", { message: response.data.status });
     } catch (error) {
-      setFailureMessage(error.response.data.errors[0]);
+      setFailureMessage(error.response.data.errors.full_messages[0]);
     }
   };
 

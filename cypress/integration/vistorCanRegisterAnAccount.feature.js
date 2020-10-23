@@ -3,7 +3,7 @@ describe("Visitor can register an account", () => {
     it("user can click on register button and see registration form", () => {
       cy.signUp();
       cy.get('[data-cy="registration-message"]').contains(
-        "Your registration was successful! Please log in to confirm your registration"
+        "success. Your registration was successful! Please log in to confirm your registration"
       );
     });
   });
@@ -23,8 +23,10 @@ describe("Visitor can register an account", () => {
         method: "POST",
         url: "http://localhost:3000/api/v1/aut**",
         response: {
-          errors: ["Passwords do not mactch. Please try again."],
-        },
+          errors: {
+            full_messages:["Passwords do not mactch. Please try again."]
+        }},
+
         status: "422",
       });
       cy.get('[data-cy="sign-up-button"]').contains("Sign Up").click();
@@ -43,8 +45,9 @@ describe("Visitor can register an account", () => {
         method: "POST",
         url: "http://localhost:3000/api/v1/aut**",
         response: {
-          errors: ["The mail already exists. Please choose another"],
-        },
+          errors: {
+            full_messages:["The mail already exists. Please choose another"]
+        }},
         status: "422",
       });
       cy.get('[data-cy="sign-up-button"]').contains("Sign Up").click();

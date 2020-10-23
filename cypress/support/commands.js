@@ -44,8 +44,8 @@ Cypress.Commands.add("signUp", () => {
     url:
       "http://localhost:3000/api/v1/aut**",
     response: {
-      message:
-        "Your registration was successful! Please log in to confirm your registration",
+      status:
+        "success. Your registration was successful! Please log in to confirm your registration",
     },
   });
   cy.route({
