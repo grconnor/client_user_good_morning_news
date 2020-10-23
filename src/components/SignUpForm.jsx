@@ -13,10 +13,15 @@ const SignUpForm = () => {
       const name = event.target.name.value;
       const email = event.target.email.value;
       const password = event.target.password.value;
-      const passwordConfirmation = event.target.passwordConfirmation.value;
-    
-      const response = await auth.signUp(name, email, password, passwordConfirmation);
-      history.replace("/login", { message: response.data.message });
+      const password_confirmation = event.target.passwordConfirmation.value;
+
+      const response = await auth.signUp({
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation,
+      });
+      history.replace("/login", { message: response.data.status });
     } catch (error) {
       setFailureMessage(error.response.data.errors[0]);
     }
@@ -24,10 +29,7 @@ const SignUpForm = () => {
 
   return (
     <Container>
-      <Form
-        data-cy="sign-up-form"
-        onSubmit={(event) => signUp(event, history)}
-      >
+      <Form data-cy="sign-up-form" onSubmit={(event) => signUp(event, history)}>
         <Form.Input
           icon="name"
           iconPosition="left"
@@ -72,7 +74,7 @@ const SignUpForm = () => {
         <Button data-cy="submit" id="Submit" content="Submit" primary />
       </Form>
       {failureMessage && (
-        <Message negative >
+        <Message negative>
           <Message.Header data-cy="message">{failureMessage}</Message.Header>
         </Message>
       )}

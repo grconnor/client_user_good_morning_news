@@ -42,7 +42,7 @@ const LoginForm = () => {
     <Container>
       {registrationMessage && (
         <Message positive data-cy="registration-message">
-          <Message.Header>{registrationMessage}</Message.Header>
+          <Message.Header>{registrationMessage}. Your registration was successful! Please log in to confirm your registration</Message.Header>
         </Message>
       )}
       <Form

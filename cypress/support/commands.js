@@ -42,7 +42,7 @@ Cypress.Commands.add("signUp", () => {
   cy.route({
     method: "POST",
     url:
-      "http://localhost:3000/api/v1/auth?confirm_success_url=registered@mail.com",
+      "http://localhost:3000/api/v1/aut**",
     response: {
       message:
         "Your registration was successful! Please log in to confirm your registration",
