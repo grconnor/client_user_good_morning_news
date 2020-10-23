@@ -13,7 +13,6 @@ const SignUpForm = () => {
       const email = event.target.email.value;
       const password = event.target.password.value;
       const password_confirmation = event.target.passwordConfirmation.value;
-
       const response = await auth.signUp({
         email: email,
         password: password,
