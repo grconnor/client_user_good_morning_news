@@ -61,7 +61,6 @@ Cypress.Commands.add("signUp", () => {
   cy.get('[data-cy="sign-up-button"]').contains("Sign Up").click();
 
   cy.get('[data-cy="sign-up-form"]').within(() => {
-    cy.get('[data-cy="name"]').type("Facundo Osores");
     cy.get('[data-cy="email"]').type("registered@mail.com");
     cy.get('[data-cy="password"]').type("password");
     cy.get('[data-cy="password-confirmation"]').type("password");

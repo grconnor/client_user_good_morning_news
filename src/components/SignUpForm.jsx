@@ -10,13 +10,11 @@ const SignUpForm = () => {
   const signUp = async (event, history) => {
     event.preventDefault();
     try {
-      const name = event.target.name.value;
       const email = event.target.email.value;
       const password = event.target.password.value;
       const password_confirmation = event.target.passwordConfirmation.value;
 
       const response = await auth.signUp({
-        name: name,
         email: email,
         password: password,
         password_confirmation: password_confirmation,
@@ -30,16 +28,6 @@ const SignUpForm = () => {
   return (
     <Container>
       <Form data-cy="sign-up-form" onSubmit={(event) => signUp(event, history)}>
-        <Form.Input
-          icon="name"
-          iconPosition="left"
-          label="Name:"
-          placeholder="name"
-          name="name"
-          type="name"
-          id="name"
-          data-cy="name"
-        />
         <Form.Input
           icon="user"
           iconPosition="left"
@@ -75,7 +63,7 @@ const SignUpForm = () => {
       </Form>
       {failureMessage && (
         <Message negative>
-          <Message.Header data-cy="message">{failureMessage}</Message.Header>
+          <Message.Header data-cy="failure-message">{failureMessage}</Message.Header>
         </Message>
       )}
     </Container>

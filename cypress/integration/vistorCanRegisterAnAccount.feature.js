@@ -24,7 +24,7 @@ describe("Visitor can register an account", () => {
         url: "http://localhost:3000/api/v1/aut**",
         response: {
           errors: {
-            full_messages:["Passwords do not mactch. Please try again."]
+            full_messages:["Password confirmation doesn't match Password"]
         }},
 
         status: "422",
@@ -32,12 +32,14 @@ describe("Visitor can register an account", () => {
       cy.get('[data-cy="sign-up-button"]').contains("Sign Up").click();
 
       cy.get('[data-cy="sign-up-form"]').within(() => {
-        cy.get('[data-cy="name"]').type("Facundo Osores");
         cy.get('[data-cy="email"]').type("registered@mail.com");
         cy.get('[data-cy="password"]').type("password");
         cy.get('[data-cy="password-confirmation"]').type("wrongPassword");
         cy.get('[data-cy="submit"]').contains("Submit").click();
       });
+      cy.get('[data-cy="failure-message"]').contains(
+        "Password confirmation doesn't match Password"
+      );
     });
     
     it("Unsuccessfully - email already exist", () => {
@@ -46,19 +48,21 @@ describe("Visitor can register an account", () => {
         url: "http://localhost:3000/api/v1/aut**",
         response: {
           errors: {
-            full_messages:["The mail already exists. Please choose another"]
+            full_messages:["Email has already been taken"]
         }},
         status: "422",
       });
       cy.get('[data-cy="sign-up-button"]').contains("Sign Up").click();
 
       cy.get('[data-cy="sign-up-form"]').within(() => {
-        cy.get('[data-cy="name"]').type("Facundo Osores");
         cy.get('[data-cy="email"]').type("registered@mail.com");
         cy.get('[data-cy="password"]').type("password");
         cy.get('[data-cy="password-confirmation"]').type("password");
         cy.get('[data-cy="submit"]').contains("Submit").click();
       });
+      cy.get('[data-cy="failure-message"]').contains(
+        "Email has already been taken"
+      );
     });
   });
 });
