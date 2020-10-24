@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Header, Menu, Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -100,7 +100,7 @@ const NavigationBar = () => {
             as={Link}
             to={{ pathname: "/category/news" }}
           >
-            International
+            News
           </Menu.Item>
 
           {authenticated ? (

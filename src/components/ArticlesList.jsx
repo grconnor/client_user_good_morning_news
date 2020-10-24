@@ -1,7 +1,7 @@
 import ArticlesCard from "./ArticlesCard";
 import React, { useState, useEffect } from "react";
 import Articles from "../modules/articles";
-import { Grid, Container, Message } from "semantic-ui-react";
+import { Grid, Container, Message, Header, Segment } from "semantic-ui-react";
 import { useParams, useLocation } from "react-router-dom";
 
 const ArticlesList = () => {
@@ -33,6 +33,35 @@ const ArticlesList = () => {
 
   return (
     <>
+      {local && (
+        <Container>
+          <Segment textAlign="center">
+            <Header>
+              {local === "Sweden"
+                ? "Welcome to our news about Sweden!"
+                : "Enjoy our International section!"}
+            </Header>
+          </Segment>
+        </Container>
+      )}
+      {category ? (
+        <Container>
+          <Segment textAlign="center">
+            <Header>
+              Enjoy our {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+              section!
+            </Header>
+          </Segment>
+        </Container>
+      ) : (
+        !local && (
+          <Container>
+            <Segment textAlign="center">
+              <Header>Enjoy our content!</Header>
+            </Segment>
+          </Container>
+        )
+      )}
       {message && (
         <Message positive data-cy="payment-success-message">
           <Message.Header>{message}</Message.Header>
@@ -43,9 +72,9 @@ const ArticlesList = () => {
           <Message.Header>{errorMessage}</Message.Header>
         </Message>
       )}
-      <Container id="container">
+      <div id="container">
         <Grid>
-          <Grid.Row columns={3}>
+          <Grid.Row>
             {articles.map((article) => {
               return (
                 <div data-cy={"article-" + article.id} key={article.id}>
@@ -55,7 +84,7 @@ const ArticlesList = () => {
             })}
           </Grid.Row>
         </Grid>
-      </Container>
+      </div>
     </>
   );
 };

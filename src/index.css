@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap");
 #container {
   padding-top: 3em;
-  background: linear-gradient(to bottom, #ffffff 0%, #d3d3d3 100%);
+  width: 68%;
+  margin: auto;
 }
 #good,
 #morning,
@@ -43,6 +44,5 @@
 
 .centered {
   max-width: 60%;
-  margin: auto
-
+  margin: auto;
 }
