@@ -7,34 +7,14 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import BecomeSubscriber from "./components/BecomeSubscriber";
-import { auth } from "./modules/auth";
+import { persistLogin } from "./modules/auth";
 import { useDispatch } from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const persistLogin = async () => {
-      if (localStorage.getItem("J-tockAuth-Storage")) {
-        let credentials = JSON.parse(
-          localStorage.getItem("J-tockAuth-Storage")
-        );
-        const response = await auth.validateToken(credentials);
-
-        if (response.success) {
-          dispatch({
-            type: "AUTHENTICATE",
-            payload: {
-              authenticated: response.success,
-              currentUser: response.data,
-            },
-          });
-        } else {
-          console.log(response);
-        }
-      }
-    };
-    persistLogin();
+    persistLogin(dispatch);
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Header, Menu, Grid } from "semantic-ui-react";
+import { Header, Menu, Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,8 +8,7 @@ const NavigationBar = () => {
   const authenticated = useSelector((state) => state.authenticated);
   const currentUser = useSelector((state) => state.currentUser);
 
-
-  const handleItemClick = (e, { name }) => {
+  const handleItemClick = ({ name }) => {
     setActiveItem(name);
   };
   return (
@@ -92,7 +91,7 @@ const NavigationBar = () => {
           >
             International
           </Menu.Item>
-          
+
           {authenticated ? (
             currentUser.role !== "subscriber" && (
               <Menu.Item
@@ -108,28 +107,29 @@ const NavigationBar = () => {
               </Menu.Item>
             )
           ) : (
-            <>
-            <Menu.Item
-              position="right"
-              data-cy="login-button"
-              name="login"
-              active={activeItem === "login"}
-              as={Link}
-              to={{ pathname: "/login" }}
-            >
-              Login
+            <Menu.Item position="right">
+              <Button
+                color="black"
+                data-cy="login-button"
+                name="login"
+                active={activeItem === "login"}
+                as={Link}
+                to={{ pathname: "/login" }}
+              >
+                Login
+              </Button>
+              <Menu.Item></Menu.Item>
+              <Button
+                color="black"
+                data-cy="sign-up-button"
+                name="sign-up"
+                active={activeItem === "sign-up"}
+                as={Link}
+                to={{ pathname: "/sign_up" }}
+              >
+                Sign Up
+              </Button>
             </Menu.Item>
-            <Menu.Item
-              position="right"
-              data-cy="sign-up-button"
-              name="sign-up"
-              active={activeItem === "sign-up"}
-              as={Link}
-              to={{ pathname: "/sign_up" }}
-            >
-              Sign Up
-            </Menu.Item>
-            </>
           )}
         </Menu>
       </Header.Subheader>
