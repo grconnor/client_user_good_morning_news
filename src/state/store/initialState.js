@@ -1,6 +1,7 @@
 const initialState = {
   currentUser: {},
-  authenticated: false
-}
+  authenticated: false,
+  country: "Local",
+};
 
 export default initialState;

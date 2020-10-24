@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header, Menu, Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState("news");
   const authenticated = useSelector((state) => state.authenticated);
   const currentUser = useSelector((state) => state.currentUser);
+  const country = useSelector((state) => state.country);
 
   const handleItemClick = ({ name }) => {
     setActiveItem(name);
@@ -31,6 +32,14 @@ const NavigationBar = () => {
       </Grid>
       <Header.Subheader data-cy="navigation-bar">
         <Menu id="menu">
+          <Menu.Item
+            data-cy="local"
+            name="local"
+            active={activeItem === "local"}
+            onClick={handleItemClick}
+          >
+            {country}
+          </Menu.Item>
           <Menu.Item
             data-cy="home"
             name="home"
