@@ -3,7 +3,7 @@ import axios from "axios";
 const getCurrentPosition = async (dispatch) => {
   navigator.geolocation.getCurrentPosition(async (pos) => {
     const country = await getCountry(pos.coords.latitude, pos.coords.longitude);
-    debugger;
+
     dispatch({
       type: "SET_LOCATION",
       payload: {

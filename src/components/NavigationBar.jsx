@@ -37,6 +37,8 @@ const NavigationBar = () => {
             name="location"
             active={activeItem === "location"}
             onClick={handleItemClick}
+            as={Link}
+            to={{ pathname: `/local/${country}` }}
           >
             {country}
           </Menu.Item>

@@ -8,10 +8,10 @@ describe("user can read articles based on their location", () => {
         method: "GET",
         url: "http://localhost:3000/api/v1/articles",
         response: "fixture:articles_index.json",
-      });    
+      }); 
       cy.route({
         method: "GET",
-        url: "http://localhost:3000/api/v1/articles/?location=sweden",
+        url: "http://localhost:3000/api/v1/articles/?local=Sweden",
         response: "fixture:sweden_index.json",
       });
       cy.visit("/", stubLocation({
@@ -41,7 +41,7 @@ describe("user can read articles based on their location", () => {
       });      
       cy.route({
         method: "GET",
-        url: "http://localhost:3000/api/v1/articles/?location=international",
+        url: "http://localhost:3000/api/v1/articles/?local=Argentina",
         response: "fixture:international_index.json",
       });
       cy.visit("/", stubLocation({

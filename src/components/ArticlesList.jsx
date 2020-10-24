@@ -7,13 +7,13 @@ import { useParams, useLocation } from "react-router-dom";
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState();
-  const { category } = useParams();
+  const { category, local } = useParams();
   let location = useLocation();
   const [message, setMessage] = useState();
 
   useEffect(() => {
     const getArticles = async () => {
-      const response = await Articles.index(category);
+      const response = await Articles.index(category, local);
       if (response?.constructor === Array) {
         setArticles(response);
         setErrorMessage("");
@@ -22,9 +22,8 @@ const ArticlesList = () => {
         setErrorMessage(response);
       }
     };
-
     getArticles();
-  }, [category]);
+  }, [category, local]);
 
   useEffect(() => {
     if (location.state) {
