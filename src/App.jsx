@@ -9,37 +9,14 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import BecomeSubscriber from "./components/BecomeSubscriber";
 import { persistLogin } from "./modules/auth";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import { getCurrentPosition } from "./modules/location";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    getCurrentPosition(dispatch);
     persistLogin(dispatch);
-
-    const getCurrentPosition = async () => {
-      navigator.geolocation.getCurrentPosition(async (pos) => {
-        const country = await getCountry(
-          pos.coords.latitude,
-          pos.coords.longitude
-        );
-        dispatch({
-          type: "SET_LOCATION",
-          payload: {
-            country: country,
-          },
-        });
-      });
-    };
-    const getCountry = async (latitude, longitude) => {
-      const apiKey = process.env.REACT_APP_OPEN_CAGE_API_KEY;
-
-      const result = await axios.get(
-        `http://api.opencagedata.com/geocode/v1/json?q=${latitude}%2C${longitude}&language=en&key=${apiKey}`
-      );
-      return result.data.results[0].components.country;
-    };
-    getCurrentPosition();
   }, []);
 
   return (
