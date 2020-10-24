@@ -92,6 +92,7 @@ const NavigationBar = () => {
           >
             International
           </Menu.Item>
+          
           {authenticated ? (
             currentUser.role !== "subscriber" && (
               <Menu.Item
@@ -107,6 +108,7 @@ const NavigationBar = () => {
               </Menu.Item>
             )
           ) : (
+            <>
             <Menu.Item
               position="right"
               data-cy="login-button"
@@ -117,6 +119,17 @@ const NavigationBar = () => {
             >
               Login
             </Menu.Item>
+            <Menu.Item
+              position="right"
+              data-cy="sign-up-button"
+              name="sign-up"
+              active={activeItem === "sign-up"}
+              as={Link}
+              to={{ pathname: "/sign_up" }}
+            >
+              Sign Up
+            </Menu.Item>
+            </>
           )}
         </Menu>
       </Header.Subheader>

@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 axios.defaults.baseURL = apiUrl;
 
 ReactDOM.render(
-  <StripeProvider apiKey="pk_test_21nBNjeqdyB1Mzm2VjDPQprF00kyEKYZSK">
+  <StripeProvider apiKey="pk_test_51HdYrMDq51jzAKNH4YJ57mqONMDOMjEbIiQxTz1Tm52eSsWwXZZTTVKKvHmjNljMflZ8nmeJdz4SyBzK6IuwBt0I00XuNFcgTi">
     <Provider store={store}>
       <Router>
         <App />

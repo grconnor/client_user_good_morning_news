@@ -13,13 +13,14 @@ const auth = new JtockAuth({
 });
 
 const getAuthHeaders = () => {
-  let headers = sessionStorage.getItem("J-tockAuth-Storage");
+  let headers = localStorage.getItem("J-tockAuth-Storage");
   headers = JSON.parse(headers);
   headers = {
     ...headers,
     "Content-type": "application/json",
     Accept: "application/json",
   };
+  return headers;
 };
 
 export { auth, getAuthHeaders };
