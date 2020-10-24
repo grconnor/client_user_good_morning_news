@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Argentina and the Blue Dollar",
+      "lead": "God of all coharts",
+      "category": "lifestyle",
+      "premium": true,
+      "location": "international"
+    },
+    {
+      "id": 2,
+      "title": "Colombia Colombia Colombia!",
+      "lead": "Sad campers is always a losers",
+      "category": "sports",
+      "premium": false,
+      "location": "international"
+    }
+  ]
+}

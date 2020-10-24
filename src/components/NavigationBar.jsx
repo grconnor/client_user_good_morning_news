@@ -33,9 +33,9 @@ const NavigationBar = () => {
       <Header.Subheader data-cy="navigation-bar">
         <Menu id="menu">
           <Menu.Item
-            data-cy="local"
-            name="local"
-            active={activeItem === "local"}
+            data-cy="location"
+            name="location"
+            active={activeItem === "location"}
             onClick={handleItemClick}
           >
             {country}

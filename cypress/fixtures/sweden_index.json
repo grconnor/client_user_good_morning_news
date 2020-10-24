@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "This happened in Sweden",
+      "lead": "God of all coharts",
+      "category": "lifestyle",
+      "premium": true,
+      "location": "sweden"
+    },
+    {
+      "id": 2,
+      "title": "This also happened in Sweden",
+      "lead": "Sad campers is always a losers",
+      "category": "sports",
+      "premium": false,
+      "location": "sweden"
+    }
+  ]
+}
