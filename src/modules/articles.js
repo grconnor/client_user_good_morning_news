@@ -2,14 +2,14 @@ import axios from "axios";
 import { getAuthHeaders } from "./auth";
 
 const Articles = {
-  async index(category, local) {
+  async index(category, location) {
     let response;
     try {
       let result;
       if (category) {
         result = await axios.get(`/articles/?category=${category}`);
-      } else if (local) {
-        result = await axios.get(`/articles/?local=${local}`);
+      } else if (location) {
+        result = await axios.get(`/articles/?location=${location}`);
       } else {
         result = await axios.get(`/articles`);
       }
