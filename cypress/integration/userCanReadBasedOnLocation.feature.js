@@ -2,7 +2,7 @@ const stubLocation = require("../support/stubLocation");
 
 describe("user can read articles based on their location", () => {
   context('when in Sweden', () => {
-    before(() => {
+    beforeEach(() => {
       cy.server()  
       cy.route({
         method: "GET",
@@ -32,7 +32,7 @@ describe("user can read articles based on their location", () => {
   })
 
   context('when in Argentina', () => {
-    before(() => {
+    beforeEach(() => {
       cy.server()
       cy.route({
         method: "GET",
