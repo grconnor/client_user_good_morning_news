@@ -17,7 +17,7 @@ const getCountry = async (latitude, longitude) => {
 
   try {
     const result = await axios.get(
-      `http://api.opencagedata.com/geocode/v1/json?q=${latitude}%2C${longitude}&language=en&key=${apiKey}`
+      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}%2C${longitude}&language=en&key=${apiKey}`
     );
 
     return result.data.results[0].components.country;
