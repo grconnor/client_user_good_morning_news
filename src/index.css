@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap");
-#container {
-  padding-top: 3em;
-  width: 68%;
-  margin: auto;
-}
+
 #good,
 #morning,
 #News {
@@ -44,5 +40,14 @@
 
 .centered {
   max-width: 60%;
+  margin: auto;
+}
+
+.card-style {
+  margin: 1%;
+}
+#container {
+  padding-top: 3em;
+  width: 57%;
   margin: auto;
 }
