@@ -77,7 +77,7 @@ const ArticlesList = () => {
           <Grid.Row>
             {articles.map((article) => {
               return (
-                <div data-cy={"article-" + article.id} key={article.id}>
+                <div class="card-style" data-cy={"article-" + article.id} key={article.id}>
                   <ArticlesCard article={article} />
                 </div>
               );

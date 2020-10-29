@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   apiUrl = "http://localhost:3000/api/v1";
 }
+
 axios.defaults.baseURL = apiUrl;
 
 ReactDOM.render(
