@@ -1,6 +1,11 @@
 import JtockAuth from "j-tockauth";
 
-let apiUrl = process.env.REACT_APP_AUTH_URL;
+let apiUrl;
+if (process.env.NODE_ENV === "production") {
+  apiUrl = "https://good-morning-news-team1.herokuapp.com/";
+} else {
+  apiUrl = "http://localhost:3000";
+}
 
 const auth = new JtockAuth({
   host: apiUrl,

@@ -14,7 +14,12 @@ const store = configureStore();
 
 window.store = store;
 
-let apiUrl = process.env.REACT_APP_API_URL;
+let apiUrl;
+if (process.env.NODE_ENV === "production") {
+  apiUrl = "https://good-morning-news-team1.herokuapp.com/api/v1";
+} else {
+  apiUrl = "http://localhost:3000/api/v1";
+}
 
 axios.defaults.baseURL = apiUrl;
 
